@@ -1,21 +1,32 @@
 //Заполнение формы
 import { test as base } from '@playwright/test';
-import { JavaScriptDelaysPage, FormFieldsPage, PacticeFormPage, PopupsPage } from '../pages/index';
+import {
+  JavaScriptDelaysPage,
+  FormFieldsPage,
+  PracticeFormPage,
+  PopupsPage,
+  SliderPage,
+  CalendarsPage,
+  ModalsPage,
+} from '../pages/index';
 
 type MyFixtures = {
-  pacticeFormPage: PacticeFormPage;
+  practiceFormPage: PracticeFormPage;
   javaScriptDelaysPage: JavaScriptDelaysPage;
   formFieldsPage: FormFieldsPage;
   popupsPage: PopupsPage;
+  sliderPage: SliderPage;
+  calendarsPage: CalendarsPage;
+  modalsPage: ModalsPage;
 };
 
 export const test = base.extend<MyFixtures>({
-  pacticeFormPage: async ({ page }, use) => {
-    const pacticeFormPage = new PacticeFormPage(page, '');
-    await pacticeFormPage.page.goto('https://demoqa.com/automation-practice-form', {
+  practiceFormPage: async ({ page }, use) => {
+    const practiceFormPage = new PracticeFormPage(page, '');
+    await practiceFormPage.page.goto('https://demoqa.com/automation-practice-form', {
       waitUntil: 'domcontentloaded',
     });
-    await use(pacticeFormPage);
+    await use(practiceFormPage);
   },
   javaScriptDelaysPage: async ({ page }, use) => {
     const javaScriptDelaysPage = new JavaScriptDelaysPage(page, '');
@@ -30,5 +41,33 @@ export const test = base.extend<MyFixtures>({
       waitUntil: 'domcontentloaded',
     });
     await use(formFields);
+  },
+  popupsPage: async ({ page }, use) => {
+    const popupsPage = new PopupsPage(page, '');
+    await popupsPage.page.goto('https://practice-automation.com/popups/', {
+      waitUntil: 'domcontentloaded',
+    });
+    await use(popupsPage);
+  },
+  sliderPage: async ({ page }, use) => {
+    const sliderPage = new SliderPage(page, '');
+    await sliderPage.page.goto('https://practice-automation.com/slider/', {
+      waitUntil: 'domcontentloaded',
+    });
+    await use(sliderPage);
+  },
+  calendarsPage: async ({ page }, use) => {
+    const calendarsPage = new CalendarsPage(page, '');
+    await calendarsPage.page.goto('https://practice-automation.com/calendars/', {
+      waitUntil: 'domcontentloaded',
+    });
+    await use(calendarsPage);
+  },
+  modalsPage: async ({ page }, use) => {
+    const modalsPage = new ModalsPage(page, '');
+    await modalsPage.page.goto('https://practice-automation.com/modals/', {
+      waitUntil: 'domcontentloaded',
+    });
+    await use(modalsPage);
   },
 });

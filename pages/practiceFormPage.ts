@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 import path from 'path';
 
-export class PacticeFormPage {
+export class PracticeFormPage {
   page: Page;
   path: string;
   nameInput: Locator;
