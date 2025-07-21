@@ -52,7 +52,7 @@ export class PracticeFormPage {
 
   async fillsubjectInput(subject: string) {
     await this.subjectInput.fill(subject);
-    await this.page.getByText('Loading...').waitFor({ state: 'detached' }); //waitFor({ state: 'detached' }) - ожидание до того как пропадеть хуйня
+    await this.page.getByText('Loading...').waitFor({ state: 'detached' });
     await this.page
       .locator('[class^="subjects-auto-complete"]')
       .locator('div', { hasText: subject })
