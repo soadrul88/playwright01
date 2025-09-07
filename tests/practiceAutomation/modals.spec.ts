@@ -1,6 +1,6 @@
 import { test } from '../../fixtures';
 
-test('rar', async ({ modalsPage }) => {
+test('Модалы', async ({ modalsPage }) => {
   const data = {
     name: 'Iliya',
     email: 'soadrul@mail.ru',
