@@ -20,8 +20,8 @@ export class EtagiArendaPage {
     this.bedroomsClickArea = this.page.locator('span').filter({ hasText: /^3$/ }).first();
     this.bedroomsClick = this.page.getByRole('button', { name: 'Комнатность' });
     this.priceClick = this.page.getByRole('button', { name: 'Стоимость, ₽' });
-    this.priceInputFrom = this.page.locator('.hH5W3').first();
-    this.priceInputTo = this.page.locator('span').filter({ hasText: '₽' }).nth(1);
+    this.priceInputFrom = this.page.getByRole('textbox', { name: 'Стоимость от' });
+    this.priceInputTo = this.page.locator('span').getByRole('textbox', { name: 'до' });
     //this.filterClick = this.page.getByRole('button', { name: 'Фильтры' });
   }
   async language() {
@@ -46,8 +46,10 @@ export class EtagiArendaPage {
   }
   async priceFrom(priceFrom: string) {
     await this.priceInputFrom.fill(priceFrom);
+    await this.page.waitForTimeout(1500);
   }
   async priceTo(priceTo: string) {
     await this.priceInputTo.fill(priceTo);
+    await this.page.waitForTimeout(1500);
   }
 }
