@@ -13,4 +13,7 @@ test('Проверка фильтра', async ({ etagiArendaPage }) => {
   await etagiArendaPage.pricePick();
   await etagiArendaPage.priceFrom(data.priceFrom);
   await etagiArendaPage.priceTo(data.priceTo);
+  await etagiArendaPage.filter();
+  await etagiArendaPage.longTerm();
+  await etagiArendaPage.showCount();
 });
