@@ -5,3 +5,4 @@ export * from './practiceFormPage';
 export * from './sliderPage';
 export * from './calendarsPage';
 export * from './modalsPage';
+export * from './etagiArendaPage';

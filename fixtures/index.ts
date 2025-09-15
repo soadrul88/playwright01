@@ -1,4 +1,3 @@
-//Заполнение формы
 import { test as base } from '@playwright/test';
 import {
   JavaScriptDelaysPage,
@@ -8,6 +7,7 @@ import {
   SliderPage,
   CalendarsPage,
   ModalsPage,
+  EtagiArendaPage,
 } from '../pages/index';
 
 type MyFixtures = {
@@ -18,6 +18,7 @@ type MyFixtures = {
   sliderPage: SliderPage;
   calendarsPage: CalendarsPage;
   modalsPage: ModalsPage;
+  etagiArendaPage: EtagiArendaPage;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -69,5 +70,12 @@ export const test = base.extend<MyFixtures>({
       waitUntil: 'domcontentloaded',
     });
     await use(modalsPage);
+  },
+  etagiArendaPage: async ({ page }, use) => {
+    const etagiArendaPage = new EtagiArendaPage(page, '');
+    await etagiArendaPage.page.goto('https://www.etagi.com/realty_rent/', {
+      waitUntil: 'domcontentloaded',
+    });
+    await use(etagiArendaPage);
   },
 });
